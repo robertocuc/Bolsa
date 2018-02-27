@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/02/2018 02:12:23 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mx.unam.ciencias.is.modelo.Empresa" table="empresa" schema="public" optimistic-lock="version">
+        <id name="idEmpresa" type="int">
+            <column name="id_empresa" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="40" />
+        </property>
+        <property name="presidente" type="string">
+            <column name="presidente" length="50" />
+        </property>
+        <property name="oficinas" type="string">
+            <column name="oficinas" length="100" />
+        </property>
+        <property name="fundacion" type="string">
+            <column name="fundacion" length="50" />
+        </property>
+        <property name="numeroEmpleados" type="java.lang.Integer">
+            <column name="numeroEmpleados" />
+        </property>
+        <property name="contacto" type="string">
+            <column name="contacto" length="100" />
+        </property>
+        <set name="vacantes" table="vacante" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_empresa" />
+            </key>
+            <one-to-many class="mx.unam.ciencias.is.modelo.Vacante" />
+        </set>
+    </class>
+</hibernate-mapping>
